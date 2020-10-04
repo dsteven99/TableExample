@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import ReactPaginate from 'react-paginate';
+import './Table.css';
 
 
 class Table extends React.Component {
