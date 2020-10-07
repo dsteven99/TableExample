@@ -58,7 +58,7 @@ class Table extends React.Component {
                 return (
                     <td key={cellIndex} align={align ? align : 'left'}>
 
-                        { renderer ? renderer(item) : item[dataKey]}
+                        { renderer ? renderer(item) : dataKey ? item[dataKey] : ''}
                     </td>
                 )
             });

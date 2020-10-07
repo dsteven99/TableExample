@@ -33,6 +33,6 @@ Name | Type | Descriptions | Required
 header | String | Represents the column's header text | Yes
 width | Number | Represents the column's width percentage | No
 align | String | TD tag's align value. Default value is left. | No
-dataKey | String | this is the property name on the object (in the data array passed into the Table prop) | Yes
+dataKey | String | this is the property name on the object (in the data array passed into the Table prop) | No
 sortable | Bool | If true, column will be sortable | No
 renderer | Function | Pass in a function to override how the TD tag gets rendered. The function must return JSX. | No
