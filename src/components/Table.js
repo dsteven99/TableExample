@@ -24,12 +24,19 @@ class Table extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.data !== this.props.data) {
+        if (prevProps.data !== this.props.data) {
             const pageCount = Math.ceil(this.props.data.length / this.props.perPage);
-            const data = [...this.props.data];
+            
+            const data =  this.state.sortValues.sortColumn ? 
+            
+            this.state.sortValues.sortOrder === 'asc' ? 
+            _.sortBy([...this.props.data], this.state.sortValues.sortColumn) :
+            _.sortBy([...this.props.data], this.state.sortValues.sortColumn).reverse() 
+            : [...this.props.data];
+
             this.setState({ pageCount: pageCount, sortedData: data });
         }
-      }
+    }
 
     handlePageClick = (e) => {
         const selectedPage = e.selected;
@@ -60,7 +67,7 @@ class Table extends React.Component {
 
                         { renderer ? renderer(item) : dataKey ? item[dataKey] : ''}
                     </td>
-                )
+                );
             });
             return (
                 <tr key={rowIndex}>
@@ -71,7 +78,7 @@ class Table extends React.Component {
     }
 
     sortTable = (dataKey) => {
-
+        
         let values = { ...this.state.sortValues };
         if (dataKey === this.state.sortValues.sortColumn) {
             if (this.state.sortValues.sortOrder === 'asc') {
